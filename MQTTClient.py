@@ -316,6 +316,8 @@ class MQTTClient (mqtt.Client):
                 self.tls_set(certfile=self.cfg.MQTTBroker.clientcertfile,
                              keyfile=self.cfg.MQTTBroker.clientkeyfile,
                              cert_reqs=ssl.CERT_REQUIRED)
+            elif self.cfg.MQTTBroker.port==8883:
+                tls_set()
             res=self.connect(self.cfg.MQTTBroker.host,self.cfg.MQTTBroker.port)
             logging.debug(f"MQTT host connection result: {res}")
             if res>0:
